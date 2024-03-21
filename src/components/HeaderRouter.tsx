@@ -1,14 +1,9 @@
 import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-	Routes,
-	useParams
+	Link
 } from 'react-router-dom';
-import { sluggy } from '../lib/utils';
 import SlugLink from './SlugLink';
 // import routes from MainRoutePaths
-import {HeaderRoutes, routes} from './types';
+import {HeaderRoutes} from './types';
 
 export default function HeaderRouter(props:HeaderRoutes) {
 	return <>
