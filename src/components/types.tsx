@@ -1,0 +1,49 @@
+export type routes = Array<
+{
+	name: string, 
+	element: React.JSX.Element,
+	slug?: string}>
+
+export type ApiUrlRequest = {
+	searchParams?: {
+		[key: string]: number | string | undefined;
+		search?: string,
+		limit?: number,
+		offset?: number
+	}
+	path?: string
+}
+
+export type LaunchDataList = {
+	count: number,
+	results : Array<LaunchDetail>,
+	next: string | null,
+	previous: string | null
+}
+
+export type LaunchStatus = {
+	name: string | undefined,
+	description: string | undefined,
+	abbrev: string | undefined
+}
+
+export type LaunchMission = {
+	name: string | undefined,
+	description: string | undefined
+}
+
+export type LaunchDetail = {
+	id: string,
+	name: string | undefined,
+	LaunchStatus: LaunchStatus | undefined,
+	mission: LaunchMission,
+	window_start: string | undefined,
+	window_end: string | undefined,
+	image: string | undefined
+}
+
+export type HeaderRoutes = {
+	title: string,
+	image?: string,
+	routes: Array<routes>
+}
