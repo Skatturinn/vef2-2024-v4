@@ -5,7 +5,7 @@ import Home from "./Home";
 
 export default function MainRoutePath(props: {routes: routes}) {
 	return <Routes>
-		<Route path="/" element={<Home/>}/>
+		<Route path="/" element={<Home routes={props.routes}/>}/>
 			{props.routes.map((stak =>
 				stak.name && stak.element &&
 				<Route path={`/${stak.slug || sluggy(stak.name)}`} element={stak.element} />))}

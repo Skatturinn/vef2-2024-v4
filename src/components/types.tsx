@@ -35,11 +35,12 @@ export type LaunchMission = {
 export type LaunchDetail = {
 	id: string,
 	name: string | undefined,
-	LaunchStatus: LaunchStatus | undefined,
+	status: LaunchStatus | undefined,
 	mission: LaunchMission,
 	window_start: string | undefined,
 	window_end: string | undefined,
-	image: string | undefined
+	image: string | undefined,
+	last_updated: Date | string | undefined
 }
 
 export type HeaderRoutes = {

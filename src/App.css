@@ -1,10 +1,192 @@
-.App {
-  text-align: center;
+/* Reset og border-box á allt */
+* {
+	margin: 0;
+	padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+	box-sizing: border-box;
+	overflow-wrap: anywhere;
+	text-align: center;
+	justify-items: center;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+:root {
+	--spacing: 1rem;
+	--max-width: 56rem;
+
+	--font-family-fine: 'Strait', sans-serif;
+	--font-family-basic: 'Space Mono', monospace;
+
+	--navy: #0c1438;
+	--navy-light: #222b52;
+	--red: #ca0b4a;
+	--white: #fff;
+}
+
+img {
+	width: 100%;
+	justify-self: center;
+	border-radius: 1em;
+}
+
+html {
+	font-family: var(--font-family-fine);
+	color: #0c1438;
+}
+
+input,
+select,
+button {
+	font-size: inherit;
+}
+
+input {
+	grid-column-end: span 9;
+	border-radius: 1em 0 0 1em;
+	border: #0c1438 solid 1px;
+	padding: 0 0 0 1em;
+	color: #222b52
+}
+
+button {
+	grid-column: span 3;
+}
+
+input,
+select,
+button,
+a {
+	font-family: var(--font-family-basic);
+}
+
+input[type='number'] {
+	padding-inline-start: calc(var(--spacing) / 2);
+}
+
+.search-button {
+	padding-inline: calc(var(--spacing) / 2);
+	border-radius: 0 1em 1em 0;
+	border: var(--navy) solid 1px;
+	background-color: var(--navy);
+	color: var(--white);
+}
+
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Strait', sans-serif;
+}
+
+main {
+	flex-direction: column;
+	gap: var(--spacing);
+	margin: 1rem auto;
+	padding-inline: var(--spacing);
+	max-width: var(--max-width);
+	max-height: 100vh;
+}
+
+body {
+	font-family: 'Space Mono', monospace;
+	height: 100vh;
+	display: flex;
+}
+
+.id {
+	display: none;
+}
+
+/* klassar */
+/* container */
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	width: 100%;
+	align-self: center;
+}
+
+/* title */
+h2 {
+	grid-column: span 12;
+	justify-self: center;
+	align-self: center;
+	font-family: var(--font-family-fine);
+}
+
+.heading {
+	text-align: center;
+	color: var(--navy);
+	text-decoration: none;
+}
+
+/* takki fyrir sidu */
+.id-trigger {
+	background-color: var(--white);
+	border: none;
+	color: var(--navy);
+	text-align: left;
+}
+
+.loading {
+	cursor: wait !important;
+	color: var(--navy-light);
+	grid-column: span 12;
+	justify-self: center;
+}
+
+/* span 12 grid */
+p,
+li,
+.back,
+.results {
+	grid-column: span 12;
+	list-style: none;
+}
+
+.span12 {
+	grid-column: span 12;
+	gap: var(--spacing);
+}
+
+/* Virkni */
+.back:active,
+.search-button:active,
+.id-trigger:active {
+	color: var(--navy-light);
+}
+
+.id-trigger:hover,
+.search-button:hover,
+.back:hover,
+.heading:hover {
+	color: var(--red);
+	cursor: pointer;
+}
+
+textarea:focus,
+input:focus {
+	outline: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,6 +208,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App {
+	margin: 0 auto;
 }
 
 @keyframes App-logo-spin {

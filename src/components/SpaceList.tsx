@@ -1,5 +1,6 @@
 import useFetch from "react-fetch-hook";
 import { ApiUrlRequest, LaunchDataList } from "./types";
+import PageSelector from "./PageSelector";
 
 const url = process.env.REACT_APP_PUBLIC_API_BASE_URL
 
@@ -31,11 +32,12 @@ export default function SpaceList(props:
 		ld.results.forEach((space,nr)=>
 			out.push(<li key={'skot_'+nr}>
 				<a href={`/${space.id}`}>
-					<h3>{space.name}</h3>
-					{space.LaunchStatus && <p>{space.LaunchStatus.name}</p>}
+					{String(space.name)}: {space.status && JSON.stringify(space.status.name).replaceAll("\"","")}
 					</a></li>)
 		)
-		return (<ul className='grid-container'>{out}</ul>);
+		return (<div>
+			<ul className='grid-container'>{out}</ul><PageSelector count={ld.count} page={1} path={props.path || ''} limit={10} offset={props.searchParams?.offset || 0}/>
+		</div>);
 
 	}
 	// const v = 'vantar';
