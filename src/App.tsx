@@ -19,17 +19,19 @@ export type ApiUrlRequest = {
 	path?: string
 }
 function App() {
-	const sidur_0:Array<string> = ['seinustu', 'næstu', 'öll'];
+	const sidur_0= [{name:'seinustu',path:'previous'},
+	{name: 'næstu', path: 'upcoming'}, {name:'öll',path:''}];
 	const sidur_1:routes = sidur_0.map(stak => {
-		const slug = sluggy(stak)
+		const slug = sluggy(stak.name)
 		return {
-			name: stak, 
-			element: <ListPage name={''}/>}
+			name: stak.name, 
+			element: <ListPage slug={slug} name={stak.path}/>,
+			path: stak.path,
+			slug: slug}
 			})
 
   return (
     <div className="App">
-		<p>test</p>
 		<Routing title='🚀 Geimskotaleitin vef2' routes={[sidur_1]}/>
     </div>
   );

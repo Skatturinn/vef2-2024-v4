@@ -11,13 +11,13 @@ export default function Search(props: {path: string}) {
   };
 
   return (
-    <div>
+    <form className='nafn grid-container'>
       <input
         type="text"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
-    </div>
+      <button onClick={handleSearch}>Leita</button>
+    </form>
   );
 }

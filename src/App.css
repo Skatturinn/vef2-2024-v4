@@ -65,7 +65,9 @@ input,
 select,
 button,
 a {
-	font-family: var(--font-family-basic);
+	font-family: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 input[type='number'] {
@@ -172,14 +174,16 @@ li,
 /* Virkni */
 .back:active,
 .search-button:active,
-.id-trigger:active {
+.id-trigger:active,
+a:active {
 	color: var(--navy-light);
 }
 
 .id-trigger:hover,
 .search-button:hover,
 .back:hover,
-.heading:hover {
+a:hover,
+button:hover {
 	color: var(--red);
 	cursor: pointer;
 }

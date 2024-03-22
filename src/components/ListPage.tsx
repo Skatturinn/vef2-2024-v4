@@ -7,9 +7,7 @@ import React from "react";
 
 export default function ListPage(props: {name: string, slug?:string}) {
 	const slug = props.slug || sluggy(props.name);
-
-
 	return  <div>
 			<Search path={slug}/>
-			<SpaceList path={slug}/>
+			<SpaceList path={props.name} pageNavigation={true} slug={props.slug}/>
 		</div>}

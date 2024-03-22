@@ -1,5 +1,6 @@
 // Forsíða með einhverjum titli, 
 
+import path from "path"
 import { sluggy } from "../lib/utils"
 import Search from "./Search"
 import SpaceList from "./SpaceList"
@@ -12,12 +13,11 @@ function Preview(props:
 	}
 	) {
 		return <ul className="results">
-			<li>test2</li>
 			{props.preview.map(stak => 
 				<li>
 					<h2>{stak.name}</h2>
-					<SpaceList path={stak.path} searchParams={{limit: 5, offset:stak.offset || 0}}/>
-					<a href={stak.href}>Skoða meira...</a>
+					<SpaceList path={stak.path} searchParams={{limit: 3, offset:stak.offset || 0}}/>
+					<a href={'/' + stak.href}>Skoða fleiri...</a>
 				</li>)}
 		</ul>
 
@@ -25,18 +25,18 @@ function Preview(props:
 
 
 export default function Home(props: {routes: routes}) {
-	const href = props.routes.map(stak => stak.name)
+	const href = props.routes.map(stak => {
+		return {
+			path: stak.path || '',
+		name: stak.name.toUpperCase()[0] + stak.name.slice(1) + ' geimskot',
+	offset: 5, href: stak.slug || 'test'}
+	})
 	return <>
 	<div className='rows'>
+		<p>{href[0].href}</p>
 		<h2 className="heading nafn">Geimskotaleitin vef2</h2>
-		<Search path={sluggy(href[2])}/>
-		<Preview preview={[
-			{path: 'previous', name: 'Seinustu geimskot', offset: 5, href: sluggy(href[0])},
-			{path: 'upcoming', name: 'Næstu geimskot', offset: 5, href: sluggy(href[1])},
-			{path: '', name: 'Öll geimskot.', href: sluggy(href[2])}
-
-		]}/>
-
+		<Search path={sluggy('öll')}/>
+		<Preview preview={href}/>
 	</div>
 	</>
 };

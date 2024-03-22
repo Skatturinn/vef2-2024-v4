@@ -1,6 +1,8 @@
 import useFetch from "react-fetch-hook";
 import { ApiUrlRequest, LaunchDataList } from "./types";
 import PageSelector from "./PageSelector";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const url = process.env.REACT_APP_PUBLIC_API_BASE_URL
 
@@ -11,21 +13,29 @@ if (!url) {
 export default function SpaceList(props: 
 	ApiUrlRequest = {
 		searchParams: {
-			limit: 10,
-			offset: 0
 		},
 		path: '',
+		pageNavigation: false,
+		slug: ''
 	} 
 	) {
-	const sott = new URL(`launch/${props.path || ''}`, url);
-	props.searchParams && Object.keys(
-		props.searchParams).forEach(
-			(key )=> props.searchParams && sott.searchParams.set(
-				String(key),String(props.searchParams[key])
-				));
-	const { isLoading, error, data} = useFetch(sott.href);
+	const [searchParams] = useSearchParams();
+	const currentPage = parseInt(String(searchParams.get('page')));
+	const {pageNavigation, slug} = props
+	const limit = props.searchParams?.limit;
+	const offset = props.searchParams?.offset || currentPage > 1 ? (currentPage-1)*(limit || 10) : 0
+	const [fetchUrl, setFetchUrl] = useState(() => {
+        const url = new URL(`launch/${props.path || ''}${offset ? `?offset=${offset}` : ''}${limit ? `?limit=${limit}` : ''}`, process.env.REACT_APP_PUBLIC_API_BASE_URL);
+        return url.href;
+    });
+    const navigate = useNavigate();
+    const { isLoading, error, data } = useFetch(fetchUrl);
+	useEffect(() => {
+        const url = new URL(`launch/${props.path || ''}${offset ? `?offset=${offset}` : ''}${limit ? `?limit=${limit}` : ''}`, process.env.REACT_APP_PUBLIC_API_BASE_URL);
+        setFetchUrl(url.href);
+    }, [props.path, searchParams, currentPage, props.searchParams]);
 	if (isLoading) return <p>Sæki geimskot...</p>;
-	if (error) return <p>'Error!'{process.env.PUBLIC_URL}</p>;
+	if (error) return <p>'Error!'{[process.env.PUBLIC_URL,slug]}</p>;
 	if ( typeof data === 'object') {
 		const out: Array<React.JSX.Element> = [];
 		const ld = JSON.parse(JSON.stringify(data)) as LaunchDataList;
@@ -36,26 +46,13 @@ export default function SpaceList(props:
 					</a></li>)
 		)
 		return (<div>
-			<ul className='grid-container'>{out}</ul><PageSelector count={ld.count} page={1} path={props.path || ''} limit={10} offset={props.searchParams?.offset || 0}/>
+			<ul className='grid-container'>{out}</ul>
+			{pageNavigation ? 
+			<PageSelector count={ld.count} page={currentPage || 1} path={slug || ''} limit={limit || 10} offset={offset || currentPage > 1 ? (currentPage-1)*(limit || 10) : 0}/>
+				: ''
+		}
 		</div>);
 
 	}
-	// const v = 'vantar';
-	// const arrayOfLists = Array.from(data.items).map(
-	// 	vara => (<li key={vara.id} id={vara.id}
-	// 		onClick={OpenProduct} className='voruspjald'>
-	// 		<figure>
-	// 			<img src={vara.image ? vara.image : ''}
-	// 				className='vorumynd'
-	// 				alt={'mynd af vöru'}></img>
-	// 			<figcaption className='voru-data'>
-	// 				<h4 className='heiti'>{vara.title ? vara.title : `titill ${v}`}</h4>
-	// 				<p className='flokk'>{vara.category_title ? vara.category_title : `flokk ${v}`}</p>
-	// 				<p className='verd'>{vara.price ? formatPrice(vara.price) : `verð ${v}`}</p>
-	// 			</figcaption>
-	// 		</figure>
-
-	// 	</li >)
-	// )
 	return (<ul className='grid-container'>{'what'}</ul>);
 }
