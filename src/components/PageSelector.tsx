@@ -5,21 +5,19 @@ export default function PageSelector(props: {count: number, page: number, path: 
 	let {count, limit, path} = props;
 	limit = limit > 0 ? limit : 10;
 	const [searchParams] = useSearchParams();
-    const currentPage = parseInt(String(searchParams.get('page')));
+    const currentPage = parseInt(String(searchParams.get('page'))) || props.page; 
+	const search = searchParams.get('search'); 
 	const [page, setPage] = useState(1);
-	// currentPage && setPage(currentPage)
 	const navigate = useNavigate();
 	const offset = page > 1 && page*limit < count ? (page - 1)*limit : props.offset || 0;
 	const numberOfPages = Math.floor(count/limit) + (count%limit > 0 ?  1: 0);
 	console.log(currentPage,props.page)
 	useEffect(() => {
-        setPage(currentPage || props.page);
-    }, [currentPage, props.page]);
+        setPage(currentPage);
+    }, [currentPage]);
 
 	const PageChange = (newPage: number = page) => {
-		navigate(`/${path || ''}?page=${newPage > 0 ? newPage : 1}`);
-		// window.history.pushState({}, '', `/${path || ''}?page=${page > 0 ? page : 1}`);
-		// window.history.go()
+		navigate(`/${ path || ''}?page=${newPage > 0 ? newPage : 1}${search ? `&search=${search}` : ''}`);
 	}
 	const numer = [];
 	numer.push(page === 1 || offset === 0 ? <p>1</p> : <button onClick={(e) => {PageChange(1)}}>1</button>)
@@ -38,7 +36,7 @@ export default function PageSelector(props: {count: number, page: number, path: 
 	return <>
 	{(offset > 0 || page > 1) ? <button onClick={(e) => {PageChange(page-1)}}>Fyrri</button> : ''}
 	<ol>
-		{numer.map(stak=> <li>{stak}</li>)}
+		{numer.map((stak,nr)=> <li key={nr}>{stak}</li>)}
 	</ol>
 	{(offset === count-limit || page === numberOfPages) ? '' : <button onClick={(e) => {setPage(page+1);
 	PageChange(page+1)}}>Næst</button>}

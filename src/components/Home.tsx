@@ -10,9 +10,6 @@ function Preview(props:
 	}
 	) {
 		return <>
-		<p>Þessi síða inniheldur vef2 útfærslu af Verkefni 9: Geimskotaleikitn, úr vefforitun 1.
-			Hún notast við sama API en inniheldur þrjá flokka og leitar möguleika með síðu virkni.
-		</p>
 		<ul className="results">
 			{props.preview.map(stak => 
 				<li>
@@ -34,9 +31,13 @@ export default function Home(props: {routes: routes}) {
 	})
 	return <>
 	<div className='rows'>
-		<p>{href[0].href}</p>
-		<h2 className="heading nafn">Geimskotaleitin vef2</h2>
 		<Search path={sluggy('öll')}/>
+		<div>
+			<h2 className="heading nafn">Geimskotaleitin vef2</h2>
+			<p>Þessi síða inniheldur vef2 útfærslu af Verkefni 9: Geimskotaleikitn, úr vefforitun 1.
+				Hún notast við sama API en inniheldur þrjá flokka og leitar möguleika með síðu virkni.
+			</p>
+		</div>
 		<Preview preview={href}/>
 	</div>
 	</>

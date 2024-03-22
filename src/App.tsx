@@ -1,9 +1,7 @@
 import React from 'react';
 import './App.css';
-import SpaceList from './components/SpaceList';
 import Routing from './components/Routing';
 import { routes } from './components/types';
-import Search from './components/Search';
 import { sluggy } from './lib/utils';
 import ListPage from './components/ListPage';
 

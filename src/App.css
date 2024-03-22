@@ -226,3 +226,10 @@ input:focus {
     transform: rotate(360deg);
   }
 }
+
+.rows {
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+	margin: 2em auto;
+}

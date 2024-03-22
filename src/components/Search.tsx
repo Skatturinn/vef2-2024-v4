@@ -5,19 +5,18 @@ export default function Search(props: {path: string}) {
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
 
-  const handleSearch = () => {
-    // Push the search text to the URL query parameter
-    navigate(`/${props.path}?search=${searchText}`);
-  };
-
+const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+	e.preventDefault(); // Prevent the default form submission behavior
+	navigate(`/${props.path}?search=${searchText}`);
+};
   return (
-    <form className='nafn grid-container'>
+    <form className='nafn grid-container' onSubmit={handleSearch}>
       <input
         type="text"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <button onClick={handleSearch}>Leita</button>
+      <button type="submit" className='search-button'>Leita</button>
     </form>
   );
 }
