@@ -242,8 +242,8 @@ input:focus {
 	color: white;
 }
 
-.App-link {
-	color: #61dafb;
+.active {
+	color: var(--red);
 }
 
 .App {
