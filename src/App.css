@@ -197,7 +197,8 @@ a:active {
 .back:hover,
 a:hover,
 button:hover,
-.pagesel button:hover {
+.pagesel button:hover,
+.lselector:hover {
 	color: var(--red);
 	cursor: pointer;
 }
@@ -255,7 +256,8 @@ input:focus {
 	margin: 2em auto;
 }
 
-.pagesel button {
+.pagesel button,
+.lselector {
 	padding-inline: calc(var(--spacing) / 2);
 	border-radius: 1em;
 	border: var(--navy) solid 1px;
@@ -275,4 +277,8 @@ input:focus {
 
 form {
 	margin: 0 0 1em;
+}
+
+.back {
+	margin: 1em 0 0;
 }

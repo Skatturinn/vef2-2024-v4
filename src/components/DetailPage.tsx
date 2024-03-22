@@ -28,5 +28,5 @@ export default function DetailPage(props: {}) {
 			</li> : ''}
 		</ol>
 	</div>
-		<a href="/">Til baka</a></>
+		<a href="/" className="back">Til baka</a></>
 }

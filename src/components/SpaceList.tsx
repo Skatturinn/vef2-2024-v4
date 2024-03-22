@@ -23,10 +23,9 @@ export default function SpaceList(props:
 	const currentPage = parseInt(String(searchParams.get('page')));
 	const search = searchParams.get('search');
 	const { pageNavigation, slug } = props
-	const limit = props.searchParams?.limit;
+	const limit = parseInt(String(searchParams.get('limit'))) || props.searchParams?.limit;
 	const offset = props.searchParams?.offset || currentPage > 1 ? (currentPage - 1) * (limit || 10) : 0
 	const [fetchUrl, setFetchUrl] = useState(() => {
-		console.log(search)
 		const url = new URL(`
 		launch/
 		${props.path || ''}
@@ -35,9 +34,6 @@ export default function SpaceList(props:
 		${search ? `?mode=list&search=${search}` : ''}
 		`.replaceAll(' ', '')
 			, process.env.REACT_APP_PUBLIC_API_BASE_URL);
-		url.searchParams.set('mode', 'list');
-		search && url.searchParams.set('search', search)
-		console.log(2)
 		return url.href;
 	});
 	const { isLoading, error, data } = useFetch(fetchUrl);
@@ -49,7 +45,6 @@ export default function SpaceList(props:
 		${offset ? `&offset=${offset}` : ''}
 		${search ? `&mode=list&search=${search}` : ''}
 		`.replaceAll(' ', ''), process.env.REACT_APP_PUBLIC_API_BASE_URL);
-		console.log(1)
 		setFetchUrl(url.href);
 	}, [props.path, searchParams, currentPage, props.searchParams, offset, limit, search]);
 	if (isLoading) return <p className="loading">Sæki geimskot...</p>;
