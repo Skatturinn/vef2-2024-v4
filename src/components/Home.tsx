@@ -1,6 +1,3 @@
-// Forsíða með einhverjum titli, 
-
-import path from "path"
 import { sluggy } from "../lib/utils"
 import Search from "./Search"
 import SpaceList from "./SpaceList"
@@ -12,14 +9,18 @@ function Preview(props:
 		Array<{path: string,name: string, offset?: number, href: string}>
 	}
 	) {
-		return <ul className="results">
+		return <>
+		<p>Þessi síða inniheldur vef2 útfærslu af Verkefni 9: Geimskotaleikitn, úr vefforitun 1.
+			Hún notast við sama API en inniheldur þrjá flokka og leitar möguleika með síðu virkni.
+		</p>
+		<ul className="results">
 			{props.preview.map(stak => 
 				<li>
 					<h2>{stak.name}</h2>
 					<SpaceList path={stak.path} searchParams={{limit: 3, offset:stak.offset || 0}}/>
 					<a href={'/' + stak.href}>Skoða fleiri...</a>
 				</li>)}
-		</ul>
+		</ul></>
 
 }
 

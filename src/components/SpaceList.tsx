@@ -1,7 +1,7 @@
 import useFetch from "react-fetch-hook";
 import { ApiUrlRequest, LaunchDataList } from "./types";
 import PageSelector from "./PageSelector";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const url = process.env.REACT_APP_PUBLIC_API_BASE_URL
@@ -28,12 +28,11 @@ export default function SpaceList(props:
         const url = new URL(`launch/${props.path || ''}${offset ? `?offset=${offset}` : ''}${limit ? `?limit=${limit}` : ''}`, process.env.REACT_APP_PUBLIC_API_BASE_URL);
         return url.href;
     });
-    const navigate = useNavigate();
     const { isLoading, error, data } = useFetch(fetchUrl);
 	useEffect(() => {
         const url = new URL(`launch/${props.path || ''}${offset ? `?offset=${offset}` : ''}${limit ? `?limit=${limit}` : ''}`, process.env.REACT_APP_PUBLIC_API_BASE_URL);
         setFetchUrl(url.href);
-    }, [props.path, searchParams, currentPage, props.searchParams]);
+    }, [props.path, searchParams, currentPage, props.searchParams, offset, limit]);
 	if (isLoading) return <p>Sæki geimskot...</p>;
 	if (error) return <p>'Error!'{[process.env.PUBLIC_URL,slug]}</p>;
 	if ( typeof data === 'object') {
