@@ -6,16 +6,6 @@ import { sluggy } from './lib/utils';
 import ListPage from './components/ListPage';
 
 
-
-export type ApiUrlRequest = {
-	searchParams?: {
-		[key: string]: number | string | undefined;
-		search?: string,
-		limit?: number,
-		offset?: number
-	}
-	path?: string
-}
 function App() {
 	const sidur_0 = [{ name: 'seinustu', path: 'previous' },
 	{ name: 'næstu', path: 'upcoming' }, { name: 'öll', path: '' }];

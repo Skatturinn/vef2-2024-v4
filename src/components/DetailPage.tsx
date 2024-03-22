@@ -7,7 +7,9 @@ export default function DetailPage(props: {}) {
 	const sott = `${process.env.REACT_APP_PUBLIC_API_BASE_URL}launch/${id}`;
 	const { isLoading, error, data } = useFetch(sott);
 	if (isLoading) return <p className="loading">Sæki skot...</p>;
-	if (error) return <p>'Error!'</p>;
+	if (error) return <div>
+		<p>'Error!'</p>
+		<p>{JSON.stringify(error)}</p></div>;
 	const result = JSON.parse(JSON.stringify(data)) as LaunchDetail
 	return <><div>
 		<h2 className="nafn">{result.name}</h2>

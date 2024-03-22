@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&family=Strait&display=swap');
+
 /* Reset og border-box á allt */
 * {
 	margin: 0;
@@ -98,7 +100,9 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Strait', sans-serif;
+	font-family: "Strait", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 main {
@@ -170,14 +174,27 @@ h2 {
 	justify-self: center;
 }
 
+.Navigation {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex: 1;
+	gap: 0.25em;
+	justify-content: space-around;
+}
+
 /* span 12 grid */
 p,
 li,
 .back,
 .results {
+	display: flex;
+	flex-direction: column;
 	grid-column: span 12;
 	list-style: none;
+	gap: 1.5em 0;
 }
+
 
 .span12 {
 	grid-column: span 12;
@@ -276,9 +293,13 @@ input:focus {
 }
 
 form {
-	margin: 0 0 1em;
+	gap: 0;
 }
 
 .back {
 	margin: 1em 0 0;
+}
+
+.results li {
+	gap: 0.25em;
 }

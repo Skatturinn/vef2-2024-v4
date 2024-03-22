@@ -36,9 +36,11 @@ export default function Home(props: { routes: routes }) {
 			<Search path={sluggy('öll')} />
 			<div>
 				<h2 className="heading nafn">Geimskotaleitin vef2</h2>
-				<p>Þessi síða inniheldur vef2 útfærslu af Verkefni 9: Geimskotaleikitn, úr vefforitun 1.
+				<p>Þessi síða inniheldur vef2 útfærslu af Verkefni 9: Geimskotaleitin, úr vefforitun 1.
 					Hún notast við sama API en inniheldur þrjá flokka og leitar möguleika með síðu virkni.
+					Hægt er að sjá vefforitun 1 útfærsluna hér:
 				</p>
+				<a href="https://inquisitive-pavlova-80772f.netlify.app/">Geimskotaleitin</a>
 			</div>
 			<Preview preview={href} />
 		</div>
