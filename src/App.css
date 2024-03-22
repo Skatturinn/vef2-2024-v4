@@ -307,3 +307,7 @@ form {
 .results li {
 	gap: 0.25em;
 }
+
+.title {
+	font-weight: 700;
+}

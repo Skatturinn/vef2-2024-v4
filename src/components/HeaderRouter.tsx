@@ -8,7 +8,7 @@ export default function HeaderRouter(props: HeaderRoutes) {
 	return <>
 		<header>
 			<nav>
-				<h1>
+				<h1 className="title" >
 					<ActiveL to="/" key={'homeButton'}>		{props.image
 						&&
 						<image href={props.image} />}
