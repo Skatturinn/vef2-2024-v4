@@ -4,7 +4,8 @@
 	padding: 0;
 }
 
-html, body {
+html,
+body {
 	box-sizing: border-box;
 	overflow-wrap: anywhere;
 	text-align: center;
@@ -107,6 +108,7 @@ main {
 	padding-inline: var(--spacing);
 	max-width: var(--max-width);
 	max-height: 100vh;
+	min-height: 90vh;
 }
 
 body {
@@ -126,6 +128,17 @@ body {
 	grid-template-columns: repeat(12, minmax(0, 1fr));
 	width: 100%;
 	align-self: center;
+	gap: 0.25em;
+}
+
+.pagesel ol {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5em;
+	text-align: center;
+	align-items: center;
+	margin: 0 auto;
+	width: fit-content;
 }
 
 /* title */
@@ -183,7 +196,8 @@ a:active {
 .search-button:hover,
 .back:hover,
 a:hover,
-button:hover {
+button:hover,
+.pagesel button:hover {
 	color: var(--red);
 	cursor: pointer;
 }
@@ -194,37 +208,44 @@ input:focus {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 .App {
-	margin: 0 auto;
+	margin: auto;
+	align-self: center;
 }
 
+.bottommargin {
+	margin: 0 0 1em 0;
+}
+
+
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .rows {
@@ -232,4 +253,20 @@ input:focus {
 	flex-direction: column;
 	gap: 2em;
 	margin: 2em auto;
+}
+
+.pagesel button {
+	padding-inline: calc(var(--spacing) / 2);
+	border-radius: 1em;
+	border: var(--navy) solid 1px;
+	background-color: var(--navy);
+	color: var(--white);
+	font-family: inherit;
+}
+
+.pagesel {
+	margin: 0.25em 0 0;
+	/* padding: auo 0 0; */
+	display: flex;
+	width: 100%;
 }

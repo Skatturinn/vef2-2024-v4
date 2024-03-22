@@ -3,9 +3,11 @@ import Search from "./Search";
 import SpaceList from "./SpaceList";
 
 
-export default function ListPage(props: {name: string, slug?:string}) {
-	const slug = props.slug || sluggy(props.name);
-	return  <div>
-			<Search path={slug}/>
-			<SpaceList path={props.name} pageNavigation={true} slug={props.slug}/>
-		</div>}
+export default function ListPage(props: { name: string, slug?: string }) {
+	const slug = props.slug
+	return <div>
+		<h2>{props.name[0].toLocaleUpperCase() + props.name.slice(1)} geimskot</h2>
+		<Search path={sluggy(props.name) || ''} />
+		<SpaceList path={slug} pageNavigation={true} slug={sluggy(props.name)} />
+	</div>
+}

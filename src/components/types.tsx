@@ -1,10 +1,10 @@
 export type routes = Array<
-{
-	name: string, 
-	element: React.JSX.Element,
-	slug?: string,
-	path?: string // api Path
-}>
+	{
+		name: string,
+		element: React.JSX.Element,
+		slug?: string,
+		path?: string // api Path
+	}>
 
 export type ApiUrlRequest = {
 	searchParams?: {
@@ -20,7 +20,7 @@ export type ApiUrlRequest = {
 
 export type LaunchDataList = {
 	count: number,
-	results : Array<LaunchDetail>,
+	results: Array<LaunchDetail>,
 	next: string | null,
 	previous: string | null
 }

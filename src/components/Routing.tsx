@@ -6,8 +6,8 @@ import { HeaderRoutes } from "./types";
 
 export default function Routing(props: HeaderRoutes) {
 	return <Router>
-			<HeaderRouter title={props.title} image={props.image} routes={props.routes}/>
-			<main>{props.routes.map(stak => <MainRoutePath routes={stak}/>)}</main>
-		</Router>
-	
+		<HeaderRouter title={props.title} image={props.image} routes={props.routes} />
+		<main>{props.routes.map(stak => <MainRoutePath routes={stak} />)}</main>
+	</Router>
+
 }
