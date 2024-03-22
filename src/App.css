@@ -107,7 +107,6 @@ main {
 	margin: 1rem auto;
 	padding-inline: var(--spacing);
 	max-width: var(--max-width);
-	max-height: 100vh;
 	min-height: 90vh;
 }
 
@@ -139,6 +138,7 @@ body {
 	align-items: center;
 	margin: 0 auto;
 	width: fit-content;
+	flex-wrap: wrap;
 }
 
 /* title */
@@ -269,4 +269,10 @@ input:focus {
 	/* padding: auo 0 0; */
 	display: flex;
 	width: 100%;
+	flex-wrap: wrap;
+	gap: 0.5em;
+}
+
+form {
+	margin: 0 0 1em;
 }

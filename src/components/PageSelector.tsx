@@ -21,13 +21,13 @@ export default function PageSelector(props: { count: number, page: number, path:
 	}
 	const numer = [];
 	numer.push(page === 1 || offset === 0 ? <p>1</p> : <button onClick={(e) => { PageChange(1) }}>1</button>)
-
+	page - 3 > 1 && numer.push(<p>...</p>)
 	for (const i of [page - 2, page - 1, page, page + 1, page + 2]) {
 		if (i > 1 && i < numberOfPages) {
 			i !== page ? numer.push(<button onClick={(e) => { PageChange(i) }}>{i}</button>) : numer.push(<p>{i}</p>);
 		}
 	}
-
+	page < numberOfPages - 3 && numer.push(<p>...</p>)
 	numer.push(page === numberOfPages ? <p>{numberOfPages}</p> :
 		<button onClick={(e) => { PageChange(numberOfPages) }}>{numberOfPages}</button>)
 
