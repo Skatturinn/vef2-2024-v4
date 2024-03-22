@@ -22,7 +22,7 @@ export default function LimitSelector() {
 	};
 
 	return (
-		<div>
+		<div className='margin'>
 			<label htmlFor="limit">Fjöldi:</label>
 			<select id="limit" value={limit} onChange={handleLimitChange} className='lselector'>
 				<option value={10}>10</option>

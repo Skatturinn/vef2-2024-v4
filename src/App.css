@@ -255,6 +255,10 @@ input:focus {
 	margin: 0 0 1em 0;
 }
 
+.margin {
+	margin: 0.5em 0 0;
+}
+
 
 @keyframes App-logo-spin {
 	from {
